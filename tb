@@ -1,0 +1,16 @@
+module tb_decoder_3to8;
+    reg [2:0] in;
+    reg en;
+    wire [7:0] out;
+
+    decoder_3to8 dut(in, en, out);
+
+    initial begin
+        $dumpfile("decoder_3to8.vcd");
+        $dumpvars(0, tb_decoder_3to8);
+        en = 1;
+        for (in = 0; in < 8; in = in + 1) #10;
+        en = 0; in = 3'b101; #10;
+        $finish;
+    end
+endmodule
